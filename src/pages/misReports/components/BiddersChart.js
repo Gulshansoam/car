@@ -35,11 +35,6 @@ const BiddersChart = (props) => {
   const state = {
     series: [
       {
-        // name: `${
-        //   misReportForm.bidder_name.length > 0
-        //     ? "Participated Result"
-        //     : "Published Result"
-        // }`,
         name: "Participated Result",
         data: value.map((res) => res.participatedcount),
       },
@@ -47,14 +42,6 @@ const BiddersChart = (props) => {
         name: "Awarded Result",
         data: value.map((res) => res.awardedcount),
       },
-      // {
-      //   name: "Lost Count",
-      //   data: value.map((res) => res.lostcount),
-      // },
-      // {
-      //   name: "Rtacount Count",
-      //   data: value.map((res) => res.rtacount),
-      // },
     ],
     options: {
       noData: {

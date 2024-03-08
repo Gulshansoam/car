@@ -87,18 +87,7 @@ const OwnerShipChart = ({ misReportForm }) => {
       legend: {
         position: "bottom",
       },
-      // colors: [
-      //   "#0eb05e",
-      //   "#ffb826",
-      //   "#2E93fA",
-      //   "#FF0000",
-      //   "#66DA26",
-      //   "#546E7A",
-      //   "#E91E63",
-      //   "#4B0082",
-      //   "#FF9800",
-      //   "#FF4500",
-      // ],
+    
       colors: tenderOwnerShipColor(value),
       responsive: [
         {

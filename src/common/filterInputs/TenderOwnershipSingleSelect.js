@@ -52,7 +52,7 @@ const TenderOwnershipSingleSelect = ({
     event.preventDefault();
     setTenderOwnershipTag({
       ...value,
-      title: value.organization_type_name,
+      title: value?.organization_type_name,
       type: "Ownership",
     });
   };
@@ -71,7 +71,9 @@ const TenderOwnershipSingleSelect = ({
           value={tenderOwnershipTag}
           onChange={handleChange}
           // filterOptions={filterOptions}
-          getOptionLabel={(option) => option.organization_type_name}
+          getOptionLabel={(option) =>
+            option?.organization_type_name ? option?.organization_type_name : ""
+          }
           renderInput={(params) => (
             <TextField {...params} label="Tendering Ownership" />
           )}

@@ -111,7 +111,7 @@ const ResultDateInput = ({ fromDashboard }) => {
       <RangePicker
         placement="bottomRight"
         style={{ width: "100%" }}
-        dropdownClassName="rangepicker-poparea"
+        popupClassName="rangepicker-poparea"
         onChange={(e) => handleSelectedDate(e)}
         format={"YYYY/MM/DD"}
         // value={
@@ -121,11 +121,11 @@ const ResultDateInput = ({ fromDashboard }) => {
           FromDate !== null && ToDate !== null
             ? [dayjs(FromDate, "YYYY/MM/DD"), dayjs(ToDate, "YYYY/MM/DD")]
             : isFromDashboard
-              ? [
+            ? [
                 dayjs(fromDefaulDate(), "YYYY/MM/DD"),
                 dayjs(toDefaultDate(), "YYYY/MM/DD"),
               ]
-              : [FromDate, ToDate]
+            : [FromDate, ToDate]
         }
         allowClear={clear}
         onFocus={focousOnDate}

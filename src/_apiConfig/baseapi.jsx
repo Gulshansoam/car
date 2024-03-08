@@ -11,7 +11,8 @@ export const URLType = {
   Local: "http://192.168.7.78:9393",
   // Local: "http://192.168.8.72:9090",
   Test: "http://192.168.7.179:7247/api",
-  misApi:"http://192.168.8.71:7247"
+  misApi:"http://192.168.8.71:7247",
+  // misApi: "https://analyticsapi.tender247.com",
 };
 
 export default axios.create({

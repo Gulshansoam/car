@@ -23,7 +23,7 @@ const RangePickerFilter = (props) => {
       <RangePicker
         placement="bottomRight"
         style={{ width: "100%" }}
-        dropdownClassName="rangepicker-poparea"
+        popupClassName="rangepicker-poparea"
         // ranges={{
         //   Yesterday: [
         //     moment().subtract(1, "days"),

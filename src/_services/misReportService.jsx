@@ -2,6 +2,7 @@ import { http } from "../_apiConfig/http";
 import { RouteUrls } from "../_apiConfig/routeUrls";
 // const MisUrls = RouteUrls.misLive;
 const MisUrls = RouteUrls.misLocal;
+
 export const genrateMISService = {
   statewiseMis,
   statewiseMisReportDownload,
@@ -24,6 +25,7 @@ export const genrateMISService = {
   categoryWisMisReportDownload,
   monthwiseMisReport,
   monthwiseBidderMisReportDownload,
+  MisPdfDownload,
 };
 
 // month wise services...........................
@@ -349,4 +351,22 @@ function categoryWisMisReportDownload(data) {
     },
     true
   );
+}
+
+async function MisPdfDownload(data) {
+  const response = await fetch(MisUrls.pdfDownload, {
+    method: "POST", // Specify the HTTP method, assuming it's a POST request
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+    body: JSON.stringify({
+      ...data,
+      user_id: parseInt(localStorage.getItem("user_id")),
+      user_query_id: parseInt(
+        localStorage.getItem("user_email_service_query_id")
+      ),
+    }),
+  });
+  return response;
 }

@@ -15,12 +15,13 @@ const CategoryChart = lazy(() => import("./components/CategoryChart"));
 const MonthWiseChart = lazy(() => import("./components/MonthWiseChart"));
 import { useTheme } from "@mui/material/styles";
 import { selectedDateRange } from "../../layouts/dashboard/header/context-api/Context";
-import { Button, Chip, Container, Grid } from "@mui/material";
+import { Chip, Container, Grid } from "@mui/material";
 import DescriptionIcon from "@mui/icons-material/Description";
 import { useSettingsContext } from "../../components/settings";
 import FullscreenImg from "../../assets/images/fullscreen.png";
 import { Modal } from "antd";
 import Loader from "../../components/loading-screen/Loader";
+import { genrateMISService } from "../../_services/misReportService";
 
 const MisReports = () => {
   const theme = useTheme();
@@ -65,6 +66,8 @@ const MisReports = () => {
   const [pdfBtnLoader, setPdfBtnLoader] = useState(false);
   const [pdfBtnModalOpen, setPdfBtnModalOpen] = useState(false);
 
+
+  // *****************************Mis-Modal-states************************//
   const [stateTableModalOpen, setStateTableModalOpen] = useState(false);
   const [departmentModalOpen, setDepartmentModalOpen] = useState(false);
   const [bidderModalOpen, setBidderModalOpen] = useState(false);
@@ -139,6 +142,8 @@ const MisReports = () => {
         break;
     }
   };
+
+  // ****************************************************//
 
   useEffect(() => {
     if (isDateSelected) {
@@ -225,42 +230,31 @@ const MisReports = () => {
     }
   };
 
+  // *******************genrate-PDF-Functionality************************************
+
   const today = new Date();
   const options = { day: "2-digit", month: "2-digit", year: "numeric" };
   const formattedDate = today.toLocaleDateString("en-GB", options);
+
   const generateAndDownloadPDF = async () => {
     try {
       setPdfBtnLoader(true);
       setPdfBtnModalOpen(true);
-      const response = await fetch(
-        "http://192.168.8.71:7247/misapi/T247Mis/api/download-pdf",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-          body: JSON.stringify({
-            ...misReportForm,
-            user_id: 7,
-            user_query_id: 231368,
-            publication_date_from: selectedFromDate,
-            publication_date_to: selectedToDate,
-            user_name: localStorage.getItem("user_name"),
-            state_name: stateTag !== null ? stateTag.state_name : "",
-            organization_name:
-              departmentTag !== null ? departmentTag.organization_name : "",
-            organization_type_name:
-              tenderOwnershipTag !== null
-                ? tenderOwnershipTag.organization_type_name
-                : "",
-            sub_industry_name:
-              subIndustryTag !== null ? subIndustryTag.sub_industry_name : "",
-            product_name: productTags !== null ? productTags.keyword_name : "",
-            keyword_name: keywordTags !== null ? keywordTags.keyword_name : "",
-          }),
-        }
-      );
+      const response = await genrateMISService.MisPdfDownload({
+        ...misReportForm,
+        user_name: localStorage.getItem("user_name"),
+        state_name: stateTag !== null ? stateTag.state_name : "",
+        organization_name:
+          departmentTag !== null ? departmentTag.organization_name : "",
+        organization_type_name:
+          tenderOwnershipTag !== null
+            ? tenderOwnershipTag.organization_type_name
+            : "",
+        sub_industry_name:
+          subIndustryTag !== null ? subIndustryTag.sub_industry_name : "",
+        product_name: productTags !== null ? productTags.keyword_name : "",
+        keyword_name: keywordTags !== null ? keywordTags.keyword_name : "",
+      });
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -280,6 +274,8 @@ const MisReports = () => {
       setPdfBtnModalOpen(false);
     }
   };
+
+  // **************************************//
 
   return (
     <>
@@ -648,7 +644,10 @@ const MisReports = () => {
         maskClosable={false}
         className="popup-fullwidth popup-fullwidth-modal-area"
       >
-        <CompetitorsTableMis misReportForm={misReportForm} />
+        <CompetitorsTableMis
+          misReportForm={misReportForm}
+          bidderName={bidderName}
+        />
       </Modal>
     </>
   );
