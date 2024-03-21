@@ -151,6 +151,8 @@ export const RouteUrls = {
     misCompetitorsWiseTableExcelDowload:
       URLType.misApi + "/misapi/T247Mis/api/competitorWise-report-download",
     pdfDownload: URLType.misApi + "/misapi/T247Mis/api/download-pdf",
+    samplePdfDownload:
+      URLType.misApi + "/misapi/T247Mis/api/download-sample-pdf",
   },
   /************************************************************
    *                                                         *
@@ -205,5 +207,7 @@ export const RouteUrls = {
     misCompetitorsWiseTableExcelDowload:
       URLType.live + "/misapi/T247Mis/api/competitorWise-report-download",
     pdfDownload: URLType.live + "/misapi/T247Mis/api/download-pdf",
+    samplePdfDownload:
+      URLType.misApi + "/misapi/T247Mis/api/download-sample-pdf",
   },
 };

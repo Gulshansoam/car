@@ -102,10 +102,14 @@ const FavResult = ({
 
   React.useEffect(() => {
     setPage(1);
-    !isSearchBy && !isSplitWord && getCount();
-    !isSearchBy && !isSplitWord && setLoader(true);
     fetchFreshResult();
-  }, [selectedFromDate, selectedToDate, isDateSelected, tenderForm]);
+    if (!tenderForm.search_by_split_word) {
+      !isSearchBy && !isSplitWord && getCount();
+      !isSearchBy && !isSplitWord && setLoader(true);
+    } else {
+      setFreshResultHasMore(true);
+    }
+  }, [tenderForm]);
 
   React.useEffect(() => {
     if (isSearchBy) {

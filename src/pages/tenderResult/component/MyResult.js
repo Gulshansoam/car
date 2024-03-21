@@ -110,9 +110,13 @@ const MyResult = ({
 
   React.useEffect(() => {
     setPage(1);
-    !isSearchBy && !isSplitWord && getCount();
-    !isSearchBy && !isSplitWord && setLoader(true);
     fetchFreshResult();
+    if (!tenderForm.search_by_split_word) {
+      !isSearchBy && !isSplitWord && getCount();
+      !isSearchBy && !isSplitWord && setLoader(true);
+    } else {
+      setMyResultHasMore(true);
+    }
   }, [tenderForm]);
 
   React.useEffect(() => {

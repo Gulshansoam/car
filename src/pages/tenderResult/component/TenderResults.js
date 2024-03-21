@@ -97,7 +97,7 @@ const TenderResults = ({
         }
       }
       //use return for fetchResult function  for page wise data
-      // debugger;
+      // ;
 
       return res.Data;
     } else {
@@ -115,9 +115,13 @@ const TenderResults = ({
 
   React.useEffect(() => {
     setPage(1);
-    !isSearchBy && !isSplitWord && getCount();
-    !isSearchBy && !isSplitWord && setLoader(true);
     fetchFreshResult();
+    if (!tenderForm.search_by_split_word) {
+      !isSearchBy && !isSplitWord && getCount();
+      !isSearchBy && !isSplitWord && setLoader(true);
+    } else {
+      setTenderResultHasMore(true);
+    }
   }, [tenderForm]);
 
   const openParticipatedBidder = (e, tender_result) => {

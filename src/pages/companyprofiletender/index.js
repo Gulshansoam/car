@@ -398,6 +398,17 @@ export default function CompanyProfileListing() {
     }
   }, [isFilter]);
 
+  useEffect(() => {
+    if (isSplitWord) {
+      setTenderForm((prev) => ({
+        ...prev,
+        page_no: 1,
+        search_by_split_word: true,
+      }));
+      setIsSplitWord(false);
+    }
+  }, [isSplitWord]);
+
   return (
     <>
       <Container maxWidth={themeStretch ? false : "xl"}>

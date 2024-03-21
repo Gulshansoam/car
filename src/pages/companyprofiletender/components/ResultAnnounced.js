@@ -107,9 +107,13 @@ const ResultAnnounced = (props) => {
 
   React.useEffect(() => {
     setPage(1);
-    !isSearchBy && !isSplitWord && getCount();
-    !isSearchBy && !isSplitWord && setLoader(true);
     fetchParticipatedResult();
+    if (!tenderForm.search_by_split_word) {
+      !isSearchBy && !isSplitWord && getCount();
+      !isSearchBy && !isSplitWord && setLoader(true);
+    } else {
+      setParticipatedResultHasMore(true);
+    }
   }, [tenderForm]);
 
   React.useEffect(() => {

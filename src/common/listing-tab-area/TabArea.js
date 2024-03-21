@@ -58,17 +58,17 @@ const TabArea = (props) => {
     pageName === "tenderListing"
       ? tenderResultTabChange(newValue)
       : companyProfileResultTabChange(newValue);
-    // setValue(newValue);
-    // setPage(1);
-    // setIsSplitWord(false);
-    // setDataFound(true);
-    // setIsSearchBy(false);
-    // setTenderForm((prev) => ({
-    //   ...prev,
-    //   search_by_split_word: false,
-    //   search_by: 1,
-    //   page_no: 1,
-    // }));
+    setValue(newValue);
+    setPage(1);
+    setIsSplitWord(false);
+    setDataFound(true);
+    setIsSearchBy(false);
+    setTenderForm((prev) => ({
+      ...prev,
+      search_by_split_word: false,
+      search_by: 1,
+      page_no: 1,
+    }));
   };
 
   return (

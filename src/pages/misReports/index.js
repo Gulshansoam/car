@@ -66,7 +66,6 @@ const MisReports = () => {
   const [pdfBtnLoader, setPdfBtnLoader] = useState(false);
   const [pdfBtnModalOpen, setPdfBtnModalOpen] = useState(false);
 
-
   // *****************************Mis-Modal-states************************//
   const [stateTableModalOpen, setStateTableModalOpen] = useState(false);
   const [departmentModalOpen, setDepartmentModalOpen] = useState(false);
@@ -275,7 +274,29 @@ const MisReports = () => {
     }
   };
 
-  // **************************************//
+  // **************************************Genrate sample pdf****************************//
+
+  const genrateSamplePdf = async () => {
+    try {
+      const res = await genrateMISService.misSamplePdfDownload();
+      if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      }
+      const data = await res.blob();
+      const blobUrl = URL.createObjectURL(data);
+      const link = document.createElement("a");
+      link.href = blobUrl;
+      link.download = `Sample_Mis_Report.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+      alert("Some Error Occurred");
+    }
+  };
+
+  // // **************************************************************
 
   return (
     <>
@@ -338,7 +359,20 @@ const MisReports = () => {
                       {pdfBtnLoader ? "Please Wait..." : "Download Pdf"}
                       <DescriptionIcon className="download-pdf-icon" />
                     </button>
+                    <button
+                      className="download-sample-pdf-btn"
+                      variant="contained"
+                      endIcon={<DescriptionIcon />}
+                      onClick={genrateSamplePdf}
+                      // disabled={pdfBtnLoader}
+                    >
+                      Sample PDF
+                      <DescriptionIcon className="download-pdf-icon" />
+                    </button>
                   </div>
+                  {/* <div className="mis-pdfDownload-btn"> */}
+
+                  {/* </div> */}
                   <div className="middle-box">
                     <div className="row">
                       <div className="col-6">

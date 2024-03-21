@@ -35,7 +35,6 @@ export default function ListingPageIndex() {
   } = useContext(selectedDateRange);
 
   const { themeStretch } = useSettingsContext();
-
   const [publicationDateFrom, setPublicationDateFrom] =
     useState(selectedFromDate);
   const [publicationDateTo, setPublicationDateTo] = useState(selectedToDate);
@@ -86,6 +85,7 @@ export default function ListingPageIndex() {
         }))
       : []
   );
+  
   const [cityTag, setCityTag] = useState([]);
   const [wordSearch, setWordSearch] = useState("");
   const [tenderOwnershipTag, setTenderOwnershipTag] = useState([]);
@@ -281,6 +281,7 @@ export default function ListingPageIndex() {
         page_no: 1,
         search_by_split_word: true,
       }));
+      setIsSplitWord(false);
     }
   }, [isSplitWord]);
 

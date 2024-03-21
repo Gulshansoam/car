@@ -5044,6 +5044,7 @@ li.sort-by-select-new-area svg {
   text-transform: capitalize;
   font-size: 15px;
   font-family: Public Sans, sans-serif;
+  margin-right: 10px;
 }
 .download-pdf-icon {
   font-size: 18px !important;
@@ -5055,4 +5056,17 @@ li.sort-by-select-new-area svg {
   text-align: center;
   font-size: 22px;
   font-weight: bold;
+}
+
+.download-sample-pdf-btn {
+  color: rgb(0, 171, 85);
+  background-color: rgba(0, 171, 85, 0.08);
+  padding: 9px 25px 12px 25px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  text-transform: capitalize;
+  font-size: 15px;
+  font-family: Public Sans, sans-serif;
 }

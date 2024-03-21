@@ -102,55 +102,96 @@ const TenderSorting = (props) => {
 
   const handleSort = (e, value) => {
     setPage(1);
+    // setTenderForm((prev) => ({ ...prev, search_by_split_word: false }));
     setDataFound(false);
     if (e == 1) {
-      setTenderForm((prev) => ({ ...prev, sort_by: 1, sort_type: 1 }));
+      setTenderForm((prev) => ({
+        ...prev,
+        sort_by: 1,
+        sort_type: 1,
+        search_by_split_word: false,
+      }));
       setIsFilter(true);
       setSortingOption([
         option[1],
         ...option.filter((res) => res.value !== e && res.value % 2 !== 0),
       ]);
     } else if (e == 2) {
-      setTenderForm((prev) => ({ ...prev, sort_by: 1, sort_type: 2 }));
+      setTenderForm((prev) => ({
+        ...prev,
+        sort_by: 1,
+        sort_type: 2,
+        search_by_split_word: false,
+      }));
       setIsFilter(true);
       setSortingOption([
         ...option.filter((res) => res.value !== e && res.value % 2 !== 0),
       ]);
     } else if (e == 3) {
-      setTenderForm((prev) => ({ ...prev, sort_by: 2, sort_type: 1 }));
+      setTenderForm((prev) => ({
+        ...prev,
+        sort_by: 2,
+        sort_type: 1,
+        search_by_split_word: false,
+      }));
       setIsFilter(true);
       setSortingOption([
         option[3],
         ...option.filter((res) => res.value !== e && res.value % 2 !== 0),
       ]);
     } else if (e == 4) {
-      setTenderForm((prev) => ({ ...prev, sort_by: 2, sort_type: 2 }));
+      setTenderForm((prev) => ({
+        ...prev,
+        sort_by: 2,
+        sort_type: 2,
+        search_by_split_word: false,
+      }));
       setIsFilter(true);
       setSortingOption([
         ...option.filter((res) => res.value !== e && res.value % 2 !== 0),
       ]);
     } else if (e == 5) {
-      setTenderForm((prev) => ({ ...prev, sort_by: 3, sort_type: 1 }));
+      setTenderForm((prev) => ({
+        ...prev,
+        sort_by: 3,
+        sort_type: 1,
+        search_by_split_word: false,
+      }));
       setIsFilter(true);
       setSortingOption([
         option[5],
         ...option.filter((res) => res.value !== e && res.value % 2 !== 0),
       ]);
     } else if (e == 6) {
-      setTenderForm((prev) => ({ ...prev, sort_by: 3, sort_type: 2 }));
+      setTenderForm((prev) => ({
+        ...prev,
+        sort_by: 3,
+        sort_type: 2,
+        search_by_split_word: false,
+      }));
       setIsFilter(true);
       setSortingOption([
         ...option.filter((res) => res.value !== e && res.value % 2 !== 0),
       ]);
     } else if (e == 7) {
-      setTenderForm((prev) => ({ ...prev, sort_by: 4, sort_type: 1 }));
+      setTenderForm((prev) => ({
+        ...prev,
+        sort_by: 4,
+        sort_type: 1,
+        search_by_split_word: false,
+      }));
       setIsFilter(true);
       setSortingOption([
         option[7],
         ...option.filter((res) => res.value !== e && res.value % 2 !== 0),
       ]);
     } else if (e == 8) {
-      setTenderForm((prev) => ({ ...prev, sort_by: 4, sort_type: 2 }));
+      setTenderForm((prev) => ({
+        ...prev,
+        sort_by: 4,
+        sort_type: 2,
+        search_by_split_word: false,
+      }));
       setIsFilter(true);
       setSortingOption([
         ...option.filter((res) => res.value !== e && res.value % 2 !== 0),

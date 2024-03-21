@@ -26,6 +26,7 @@ export const genrateMISService = {
   monthwiseMisReport,
   monthwiseBidderMisReportDownload,
   MisPdfDownload,
+  misSamplePdfDownload,
 };
 
 // month wise services...........................
@@ -367,6 +368,17 @@ async function MisPdfDownload(data) {
         localStorage.getItem("user_email_service_query_id")
       ),
     }),
+  });
+  return response;
+}
+
+async function misSamplePdfDownload(data) {
+  const response = await fetch(MisUrls.samplePdfDownload, {
+    method: "GET", // Specify the HTTP method, assuming it's a POST request
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
   });
   return response;
 }
